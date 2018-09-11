@@ -6,12 +6,12 @@
 </head>
 <body>
 <header>
-	<h1 id="title">password genrator</h1>
+	<h1 id="title">Password Generator</h1>
 </header>
 <div class="content">
 <form class="form">
-	<input id="length" type="number" name="length" min="6" max="16"> length :
-	<input id="symbol" type="checkbox" name="symbol"> symbol<br>
+	<div class="text">length: </div><input id="length" type="number" name="length" min="6" max="16"> 
+    <input type="checkbox" id="symbol"/><div class="text">Add a symbol</div><br>
 	<input id="submit" type="submit" name="submit" value="create new password">
 </form>
 <div id="output"></div>
