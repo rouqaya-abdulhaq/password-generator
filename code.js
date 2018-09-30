@@ -37,9 +37,14 @@ const generatPassword =()=>{
 	return password;
 }
 const display = ()=>{
-	output.textContent = generatPassword();
+	if (document.querySelector("#length").value<=16 && document.querySelector("#length").value>=6) {
+		output.textContent = generatPassword();
+	}else{
+		output.textContent = "invalid length 6-16 only";
+	}
+	
 }
 
-submitButton.addEventListener("click",display); 
+submitButton.addEventListener("click",display);
 submitButton.addEventListener("click",function(event){event.preventDefault()});
 
