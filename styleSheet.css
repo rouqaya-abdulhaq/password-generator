@@ -34,8 +34,7 @@ html body{
 	font-family: "Lucida Console", Monaco, monospace;
 }
 #symbol{
-	margin-left: 8em;
-	box-shadow: 1px 1px #707C71;
+	margin-left: 2em;
 }
 #length{
 	box-shadow: 1px 1px #707C71;
@@ -52,6 +51,12 @@ html body{
 	top: 2em;
 	left: 3em;
 	font-size: 30px;
+}
+#capital-letter{
+	margin-left: 1em;
+}
+.check-box{
+	box-shadow: 1px 1px #707C71;
 }
 
 
