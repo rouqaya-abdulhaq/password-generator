@@ -1,59 +1,71 @@
-let submitButton = document.querySelector("#submit");
-let output = document.querySelector("#output");
+const submitButton = document.querySelector("#submit");
+const output = document.querySelector("#output");
 const letters = "abcdefghijklmnopqrstuvwxyz";
 const symbols = "@#$&!";
 const capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const symbolCheck = document.querySelector("#symbol");
+const capitalCheck = document.querySelector("#capital-letter");
+const userNumberInput = document.querySelector("#length");
 //to have more letters and numbers than anything in the password i repeated the words
 let characterTypes = ["letter","number","letter","number","letter"];
 
-//functions that return a random characters using the arrays above
-const randomLetter = ()=>letters.charAt(Math.floor(Math.random()*letters.length));
-const randomSymbol = ()=>symbols.charAt(Math.floor(Math.random()*symbols.length));
-const randomCapital =()=> capitalLetters.charAt(Math.floor(Math.random()*capitalLetters.length));
-const randomNumber = ()=>Math.floor(Math.random()*10);
+
+const generateRandomLetter = ()=>letters.charAt(Math.floor(Math.random()*letters.length));
+const generateRandomSymbol = ()=>symbols.charAt(Math.floor(Math.random()*symbols.length));
+const generateRandomCapital =()=> capitalLetters.charAt(Math.floor(Math.random()*capitalLetters.length));
+const generateRandomNumber = ()=>Math.floor(Math.random()*10);
+
 
 	 
 const isChecked =(checkBox)=>{
 	return checkBox.checked;
 }
 
-//uses the isChecked function to see if the user checked symbol and adds symbol to the characterTypes
-//and chooses a type randomly
-//you can add more features like that 
-const randomCharacterType =()=>{
-	let symbolCheck = document.querySelector("#symbol");
-	let capitalCheck = document.querySelector("#capital-letter");
-	//if the user checked the symbol checkbox
+const isSymbolChecked = ()=>{
 	if (isChecked(symbolCheck) === true) {characterTypes.push("symbol")}
-    //if the user checked the capital letter checkbox	
-    if (isChecked(capitalCheck) === true) {characterTypes.push("capitalLetter")}
-
-	let character= characterTypes[Math.floor(Math.random()*characterTypes.length)];
-    //to delete the characters after they have been checked so they dont fill the array 
-    if (isChecked(capitalCheck) === true) {characterTypes.pop()}
+}
+const isCapitalChecked = ()=>{
+	if (isChecked(capitalCheck) === true) {characterTypes.push("capitalLetter")}
+}
+const checkBoxes = ()=>{
+	isSymbolChecked();
+	isCapitalChecked();
+}
+const deleteChecked = ()=>{
+	if (isChecked(capitalCheck) === true) {characterTypes.pop()}
     if (isChecked(symbolCheck) === true) {characterTypes.pop()}	
+}
+const generateCharacter = ()=>{
+	return characterTypes[Math.floor(Math.random()*characterTypes.length)];
+}
+ 
+const randomCharacterType =()=>{
+	checkBoxes();
+	let character= generateCharacter();
+	//delete the checked characters so they don't fill up the array
+    deleteChecked();	
     return character;
 }
 
-//generates a password 6 to 16 characters that starts with a letter
 const generatPassword =()=>{
-	let userNumberInput = document.querySelector("#length");
-	let passwordLength = userNumberInput.value;
-	let password = randomLetter();
-	while (password.length<passwordLength){
+	let passwordLengthChoice = userNumberInput.value;
+	//so the password will always start with a small letter
+	let password = generateRandomLetter();
+	while (password.length<passwordLengthChoice){
 		characterType = randomCharacterType();
 		if (characterType ==="symbol"){
-			password+= randomSymbol();
+			password+= generateRandomSymbol();
 		}else if (characterType==="capitalLetter"){
-			password+= randomCapital();
+			password+= generateRandomCapital();
 			}
 			else if(characterType==="number"){
-				password+= randomNumber();
-			}else{password+= randomLetter();}
+				password+= generateRandomNumber();
+			}else{password+= generateRandomLetter();}
 	}
 	return password;
 }
-const display = ()=>{
+
+const displayPassword = ()=>{
 	if (document.querySelector("#length").value<=16 && document.querySelector("#length").value>=6) {
 		output.textContent = generatPassword();
 	}else{
@@ -62,6 +74,6 @@ const display = ()=>{
 	
 }
 
-submitButton.addEventListener("click",display);
+submitButton.addEventListener("click",displayPassword);
 submitButton.addEventListener("click",function(event){event.preventDefault()});
 
