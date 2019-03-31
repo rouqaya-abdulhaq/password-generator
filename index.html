@@ -10,10 +10,15 @@
 </header>
 <div class="content">
 <form class="form">
-	<div class="text">length: </div><input id="length" type="number" name="length" min="6" max="16"> 
-    <input type="checkbox" id="symbol" class="check-box"/><div class="text">Add a symbol</div>
-    <input type="checkbox" id="capital-letter" class="check-box" /><div class="text">capital letter</div>
-    <br>
+	<label class="label">length: </label>
+	<input id="length" type="number" name="length" min="6" max="16"> 
+
+	<input type="checkbox" id="symbol" class="check-box"/>
+	<label class="label">Add a symbol</label>
+
+	<input type="checkbox" id="capital-letter" class="check-box" />
+	<label class="label">capital letter</label>
+	
 	<input id="submit" type="submit" name="submit" value="create new password" >
 </form>
 <div id="output" class="text"></div>
