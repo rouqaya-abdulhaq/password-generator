@@ -1,0 +1,19 @@
+{
+  "name": "password-generator",
+  "version": "1.0.0",
+  "description": "generates passwords",
+  "main": "code.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rouqaya-abdulhaq/password-generator.git"
+  },
+  "author": "Rouqaya Abdulhaq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rouqaya-abdulhaq/password-generator/issues"
+  },
+  "homepage": "https://github.com/rouqaya-abdulhaq/password-generator#readme"
+}
